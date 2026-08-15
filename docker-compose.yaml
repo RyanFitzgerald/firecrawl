@@ -69,7 +69,7 @@ x-common-env: &common-env
 
   # Leave unset to use Postgres for NuQ.
   # Set NUQ_BACKEND=fdb to use FoundationDB.
-  NUQ_BACKEND: ${NUQ_BACKEND}
+  NUQ_BACKEND: ${NUQ_BACKEND:-pg}
   FDB_CLUSTER_FILE: ${NUQ_BACKEND:+/var/fdb/fdb.cluster}
 
 
@@ -88,7 +88,7 @@ services:
       PROXY_USERNAME: ${PROXY_USERNAME}
       PROXY_PASSWORD: ${PROXY_PASSWORD}
 
-      ALLOW_LOCAL_WEBHOOKS: ${ALLOW_LOCAL_WEBHOOKS}
+      ALLOW_LOCAL_WEBHOOKS: ${ALLOW_LOCAL_WEBHOOKS:-false}
       BLOCK_MEDIA: ${BLOCK_MEDIA}
 
       MAX_CONCURRENT_PAGES: ${CRAWL_CONCURRENT_REQUESTS:-5}
